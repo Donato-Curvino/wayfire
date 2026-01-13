@@ -4,9 +4,9 @@
 #include <wayfire/option-wrapper.hpp>
 #include <wayfire/signal-definitions.hpp>
 
-class wayfire_env : public wf::plugin_interface_t
+class wayfire_environment : public wf::plugin_interface_t
 {
-    wf::option_wrapper_t<wf::config::compound_list_t<std::string>> env_entries{"env/env"};
+    wf::option_wrapper_t<wf::config::compound_list_t<std::string>> env_entries{"environment/environment"};
 
     void set_env_vars() const
     {
@@ -43,4 +43,4 @@ class wayfire_env : public wf::plugin_interface_t
     };
 };
 
-DECLARE_WAYFIRE_PLUGIN(wayfire_env);
+DECLARE_WAYFIRE_PLUGIN(wayfire_environment);

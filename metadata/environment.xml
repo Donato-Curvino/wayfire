@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <wayfire>
-	<plugin name="env">
-		<_short>Env</_short>
+	<plugin name="environment">
+		<_short>Environment</_short>
 		<_long>A plugin to set environment variables on startup.</_long>
 		<category>General</category>
 		<group>
-			<_short>Env</_short>
+			<_short>Environment</_short>
 			<_long>Specifies environment variables to set on startup.</_long>
-			<option name="env" type="dynamic-list" type-hint="plain">
-				<_short>Env</_short>
+			<option name="environment" type="dynamic-list" type-hint="plain">
+				<_short>Environment</_short>
 				<_long>Sets environment variables with `setenv()` on startup. The ID is the name of the variable, so it must be different for distinct variables.</_long>
 				<entry prefix="" type="string"/>
 				<type>string</type>
