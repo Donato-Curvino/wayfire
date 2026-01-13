@@ -3,19 +3,32 @@
 #include <wayfire/plugin.hpp>
 #include <wayfire/core.hpp>
 #include <wayfire/option-wrapper.hpp>
+#include <wayfire/signal-definitions.hpp>
 
 class wayfire_env : public wf::plugin_interface_t
 {
     wf::option_wrapper_t<wf::config::compound_list_t<std::string>> env_entries{"env/env"};
 
-  public:
-    void init() override
+    void set_env_vars() const
     {
-        /* Run only once, at startup */
         for (const auto& [name, value] : env_entries.value())
         {
             setenv(name.c_str(), value.c_str(), true);
         }
+    }
+
+    wf::signal::connection_t<wf::reload_config_signal> on_reload_config = [this] (wf::reload_config_signal*)
+    {
+        set_env_vars();
+    };
+
+  public:
+    void init() override
+    {
+        set_env_vars();
+
+        /* Set new values when reloading the config */
+        wf::get_core().connect(&on_reload_config);
     }
 };
 
