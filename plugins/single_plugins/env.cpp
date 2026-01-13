@@ -1,5 +1,4 @@
-#include <cstring>
-#include <iostream>
+#include <climits>
 #include <wayfire/plugin.hpp>
 #include <wayfire/core.hpp>
 #include <wayfire/option-wrapper.hpp>
@@ -30,6 +29,12 @@ class wayfire_env : public wf::plugin_interface_t
         /* Set new values when reloading the config */
         wf::get_core().connect(&on_reload_config);
     }
+
+    int get_order_hint() const override
+    {
+        // Initialize after the IPC plugin and before anything else
+        return INT_MIN + 1;
+    };
 };
 
 DECLARE_WAYFIRE_PLUGIN(wayfire_env);
