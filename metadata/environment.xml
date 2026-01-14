@@ -4,19 +4,15 @@
 		<_short>Environment</_short>
 		<_long>A plugin to set environment variables on startup.</_long>
 		<category>General</category>
-		<group>
+		<option name="environment" type="dynamic-list" type-hint="plain">
 			<_short>Environment</_short>
-			<_long>Specifies environment variables to set on startup.</_long>
-			<option name="environment" type="dynamic-list" type-hint="plain">
-				<_short>Environment</_short>
-				<_long>
-					Sets environment variables with `setenv()` on startup. The ID is the name of the variable,
-					so it must be different for distinct variables. The value can only be a simple string.
-					Use this to set Wayfire-specific environment variables instead of setting them for all DEs and WMs.
-				</_long>
-				<entry prefix="" type="string"/>
-				<type>string</type>
-			</option>
-		</group>
+			<_long>
+				Sets environment variables with `setenv()` on startup. The ID is the name of the variable,
+				so it must be different for distinct variables. The value can only be a simple string.
+				Use this to set Wayfire-specific environment variables instead of setting them for all DEs and WMs.
+			</_long>
+			<entry prefix="" type="string"/>
+			<type>string</type>
+		</option>
 	</plugin>
 </wayfire>
