@@ -4,6 +4,10 @@
 #include <wayfire/option-wrapper.hpp>
 #include <wayfire/signal-definitions.hpp>
 
+/**
+ * Provides a way to easily set environment variables specific
+ * to Wayfire without affecting other DEs or WMs.
+ */
 class wayfire_environment : public wf::plugin_interface_t
 {
     wf::option_wrapper_t<wf::config::compound_list_t<std::string>> env_entries{"environment/environment"};
