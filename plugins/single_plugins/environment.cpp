@@ -1,4 +1,5 @@
 #include <climits>
+#include <cstring>
 #include <wayfire/plugin.hpp>
 #include <wayfire/core.hpp>
 #include <wayfire/option-wrapper.hpp>
@@ -14,9 +15,10 @@ class wayfire_environment : public wf::plugin_interface_t
 
     void set_env_vars() const
     {
-        for (const auto& [name, value] : env_entries.value())
-        {
-            setenv(name.c_str(), value.c_str(), true);
+        for (const auto& [name, value] : env_entries.value()) {
+            if (setenv(name.c_str(), value.c_str(), true)) {
+                LOGE("Error setting environment variable ", name, "=", value, ": ", strerror(errno));
+            }
         }
     }
 
